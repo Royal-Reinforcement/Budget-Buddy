@@ -36,11 +36,7 @@ st.info('Translation of the Booking Summary Report to ADR and utilization.')
 file = st.file_uploader('Booking Summary Report | 01/01 - 12/31', type=['xlsx'])
 
 if file:
-    df = pd.read_excel(file, sheet_name='Sheet 1')
-
-    with st.expander('Raw Data'):
-        st.dataframe(df)
-
+    df                      = pd.read_excel(file, sheet_name='Sheet 1')
     df                      = df[['Unit_Code','First_Night','Last_Night','Nights','BookingRentTotal','ReservationTypeDescription']]
     df['First_Night']       = pd.to_datetime(df['First_Night'])
     df['Last_Night']        = pd.to_datetime(df['Last_Night'])
